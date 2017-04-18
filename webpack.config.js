@@ -4,9 +4,14 @@ const path = require('path');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const isProduction = process.env.NODE_ENV && process.env.NODE_ENV === 'production';
 
+const vendorFiles = [
+  'react-dom',
+  'react'
+];
 
 
 const rules = [
@@ -14,12 +19,7 @@ const rules = [
     test: /\.js$/,
     include: path.resolve(__dirname, 'src'),
     use: [{
-      loader: 'babel-loader',
-      options: {
-        presets: [
-          ['es2015', { modules: false }]
-        ]
-      }
+      loader: 'babel-loader'
     }]
   },
   {
@@ -69,7 +69,10 @@ else {
 const config = {
   devtool: 'source-map',
   context: path.resolve(__dirname, 'src'),
-  entry: './app.js',
+  entry: {
+   app: './app.js',
+   vendor: vendorFiles,
+  },
   output: {
     path: path.resolve(__dirname, 'public'),
     // publicPath: "/public/",
@@ -79,6 +82,12 @@ const config = {
     rules: rules,
   },
   plugins: [
+    new DashboardPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity,
+      filename: 'vendor-[hash].js',
+    }),
     new webpack.DefinePlugin({
       // 'process.env': {
       //   NODE_ENV: JSON.stringify(nodeEnv),

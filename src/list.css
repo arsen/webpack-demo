@@ -1,0 +1,11 @@
+.container {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.container li {
+  margin: 0px;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+}

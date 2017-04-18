@@ -4,8 +4,8 @@
   "description": "webpack 2 demo (with postcss, css modules, babel, react, etc...)",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server --watch",
-    "build": "rm -rf ./public && NODE_ENV=production node_modules/.bin/webpack -p"
+    "start": "node_modules/.bin/webpack-dev-server --watch --progress",
+    "build": "rm -rf ./public && NODE_ENV=production node_modules/.bin/webpack -p --progress"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,13 @@
   },
   "homepage": "https://github.com/arsen/webpack-demo#readme",
   "devDependencies": {
+    "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
@@ -30,5 +34,9 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   }
 }

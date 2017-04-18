@@ -1,4 +1,15 @@
+.container {
+  border: 1px solid #000;
+  width: 500px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
 .title {
   color: red;
-  text-decoration: underline;
+  font-size: 20px;
+  margin: 0px;
+  padding: 2px 5px;
+  text-align: center;
+  border-bottom: 1px solid #000;
 }
